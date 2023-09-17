@@ -8,24 +8,29 @@
 		// Update the 'dockerFile' property if you aren't using the standard 'Dockerfile' filename.
 		"dockerfile": "../Dockerfile"
 	},
+
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
+
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
+
 	// Uncomment the next line to run commands after the container is created.
 	// "postCreateCommand": "cat /etc/os-release",
+
 	// Configure tool-specific properties.
-	"customizations": {
-		"vscode": {
-			"extensions": [
-				"ms-python.python",
-				"gruntfuggly.todo-tree",
-				"eamodio.gitlens",
-				"alefragnani.bookmarks",
-				"ms-azuretools.vscode-docker"
-			]
-		}
-	}
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "gruntfuggly.todo-tree",
+                "eamodio.gitlens",
+                "alefragnani.bookmarks",
+                "ms-azuretools.vscode-docker"
+            ]
+        }
+    }
+
 	// Uncomment to connect as an existing user other than the container default. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "devcontainer"
 }

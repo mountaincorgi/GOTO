@@ -132,3 +132,8 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ],
 }
+
+LOGOUT_REDIRECT_URL = '/'
+
+MAX_FRIENDS = 5
+MAX_GOALS = 5
