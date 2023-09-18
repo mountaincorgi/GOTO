@@ -3,7 +3,7 @@ FROM python:3.11.5-slim-bullseye
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-WORKDIR /app
+WORKDIR /backend
 
 COPY requirements.txt .
 

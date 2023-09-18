@@ -16,7 +16,7 @@
 	// "forwardPorts": [],
 
 	// Uncomment the next line to run commands after the container is created.
-	// "postCreateCommand": "cat /etc/os-release",
+	"postCreateCommand": "apt update && apt install -y git && git --version",
 
 	// Configure tool-specific properties.
     "customizations": {
@@ -26,7 +26,8 @@
                 "gruntfuggly.todo-tree",
                 "eamodio.gitlens",
                 "alefragnani.bookmarks",
-                "ms-azuretools.vscode-docker"
+                "ms-azuretools.vscode-docker",
+				"donjayamanne.githistory"
             ]
         }
     }
