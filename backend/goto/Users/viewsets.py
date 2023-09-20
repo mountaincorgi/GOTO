@@ -13,13 +13,13 @@ class ProfileViewSet(ModelViewSet):
     permission_classes = [IsAuthenticated]
 
 
-class MilestoneViewSet(ModelViewSet):
+class FriendshipViewSet(ModelViewSet):
     queryset = Friendship.objects.all()
     serializer_class = FriendshipSerializer
     permission_classes = [IsAuthenticated]
 
 
-class UpdateViewSet(ModelViewSet):
+class MessageViewSet(ModelViewSet):
     queryset = Message.objects.all()
     serializer_class = MessageSerializer
     permission_classes = [IsAuthenticated]

@@ -1,13 +1,29 @@
 from django.contrib import admin
 from django.contrib.auth.views import LogoutView
 from django.urls import include, path
+from rest_framework.routers import DefaultRouter
 
+from Goals.viewsets import GoalViewSet, MilestoneViewSet, UpdateViewSet
 from Users.views import (
     HomeView, UserHomeView, UserLoginView, UserRegistrationView
 )
+from Users.viewsets import FriendshipViewSet, ProfileViewSet, MessageViewSet
  
 
+# DRF router
+router = DefaultRouter()
+router.register(r"goals", GoalViewSet, basename="goal")
+router.register(r"milestones", MilestoneViewSet, basename="milestone")
+router.register(r"updates", UpdateViewSet, basename="update")
+router.register(r"friendships", FriendshipViewSet, basename="friendship")
+router.register(r"profiles", ProfileViewSet, basename="profile")
+router.register(r"messages", MessageViewSet, basename="message")
+
+
 urlpatterns = [
+    # DRF router
+    path("models/", include(router.urls)),
+
     # Django admin
     path("admin/", admin.site.urls),
 

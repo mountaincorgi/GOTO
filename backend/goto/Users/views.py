@@ -47,6 +47,7 @@ class UserRegistrationView(View):
 
 class UserHomeView(TemplateView):
     template_name = "Users/user-home.html"
+    # TODO: validate user and return 404 if they don't exist
 
 
 # Auth
