@@ -11,6 +11,9 @@ from Users.viewsets import FriendshipViewSet, ProfileViewSet, MessageViewSet
  
 
 # DRF router
+# DefaultRouter automatically provides list and detail read-only views
+# Create, update and delete actions must be custom made however we can call on
+# the existing generic ModelViewSet methods (see class)
 router = DefaultRouter()
 router.register(r"goals", GoalViewSet, basename="goal")
 router.register(r"milestones", MilestoneViewSet, basename="milestone")
