@@ -25,7 +25,7 @@ router.register(r"messages", MessageViewSet, basename="message")
 
 urlpatterns = [
     # DRF router
-    path("models/", include(router.urls)),
+    path("data/", include(router.urls)),
 
     # Django admin
     path("admin/", admin.site.urls),

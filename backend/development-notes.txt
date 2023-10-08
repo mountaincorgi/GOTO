@@ -1,0 +1,64 @@
+# Permissions
+-------------
+
+* A full list of all users/profiles will not be accessible by anyone. Only a detail view is allowed.
+* A user has full CRUD permissions over their own items (goals, milestones) and settings.
+* A user has only read permissions of their friends' items and no permissions to access their friends' settings.
+* A user has no permissions accessing anything from users that are not their friends.
+
+Summary of permissions
+-------------------------------------------------------------------------------
+Model      | User | Friends | Public | Notes
+Goal       | CRUD | -R--    | ----   |
+Milestone  | CRUD | -R--    | ----   |
+Update     | CRUD | -R--    | ----   |
+User       | ---- | ----    | ----   | Internal, not exposed through any API
+Profile    | CRUD | -R--    | C---   | Some attributes are hidden for friends
+Friendship | CRUD | CRUD    | ----   | Model belongs to both users
+Message    | CRUD | CRUD    | ----   | Model belongs to both users
+-------------------------------------------------------------------------------
+
+Overall our models have 2 types of permission classes:
+1). CRUD | -R-- | ----
+    For user-owned objects like goals and updates
+
+2). CRUD | -R-- | C---
+    Unique permissions for profiles additionally allow them to be publicly created.
+
+3). CRUD | CRUD | ----
+    Objects that are shared between users. All users have the full set of permissions.
+
+* Users have no permission classes becuase they don't have a associated views.
+* For authentication, all views required a user to be authenticated. Therefore, the authentication class should probably extend the default IsAuthenticated class provided by REST framework.
+* Permissions should be controlled at a view level but can be overridden at an object level (see documentation)
+
+
+
+# Visibility
+------------
+* Visibility can be controlled at 2 levels:
+    1. View querysets can exclude and filter by specific fields.
+    2. Serializers can restrict what fields are displayed.
+* No user has the ability to list all of any object globally.
+
+Goal
+    - A user can view their own goals and the goals of their friends.
+
+Milestone
+    - Same as goals.
+
+Update
+    - Same as goals.
+
+User
+    - N/A (not exposed).
+
+Profile
+    - A user can only view their own profile and partially view the profile fields of their friends.
+    - A global search of all profiles can be performed that must match a username exactly. This API will be throttled and not be a part of the Profile model's viewset. 
+
+Friendship
+    - Users can view friendships that they are a part of.
+
+Message
+    - Users can view messages where they are the sender or the sendee.
