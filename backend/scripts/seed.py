@@ -1,8 +1,7 @@
-from Goals.models import Goal, Milestone, Update
-from Users.models import Friendship, Message, UserProxy
-
-
 def seed():
+    from src.Goals.models import Goal, Milestone, Update
+    from src.Users.models import Friendship, Message, UserProxy
+
     Goal.objects.all().delete()
     Message.objects.all().delete()
     Friendship.objects.all().delete()

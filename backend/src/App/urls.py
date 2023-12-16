@@ -24,9 +24,6 @@ router.register(r"messages", MessageViewSet, basename="message")
 
 
 urlpatterns = [
-    # DRF router
-    path("data/", include(router.urls)),
-
     # Django admin
     path("admin/", admin.site.urls),
 
@@ -36,6 +33,9 @@ urlpatterns = [
     path("logout/", LogoutView.as_view(), name="logout"),
     path("register/", UserRegistrationView.as_view(), name="register"),
     path("<username>/", UserHomeView.as_view(), name="user-home"),
+
+    # DRF router
+    path("<username>/data/", include(router.urls)),
 
     # REST framework testing
     path("api-auth", include("rest_framework.urls")),

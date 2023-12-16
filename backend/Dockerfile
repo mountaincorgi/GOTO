@@ -10,6 +10,6 @@ COPY requirements.txt .
 RUN pip install --upgrade pip \
     && pip install --no-warn-script-location -r requirements.txt
 
-COPY goto ./goto
+COPY src ./src
 
-CMD ["goto/manage.py", "runserver". "0.0.0.0:8000"]
+CMD ["src/manage.py", "runserver". "0.0.0.0:8000"]
